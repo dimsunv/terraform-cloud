@@ -38,4 +38,8 @@ resource "yandex_compute_instance" "instance" {
     subnet_id = var.subnet_id
     nat       = var.nat
   }
+
+  metadata = {
+    user-data = "#cloud-config\nusers:\n  - name: ${var.user_name}\n    groups: sudo\n    shell: /bin/bash\n    sudo: ['ALL=(ALL) NOPASSWD:ALL']\n    ssh-authorized-keys:\n      - ${var.public_key}"
+  }
 }

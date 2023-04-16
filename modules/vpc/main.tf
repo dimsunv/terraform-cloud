@@ -21,7 +21,7 @@ resource "yandex_vpc_subnet" "public" {
   count          = var.nat_instance ? 1 : 0
   folder_id      = yandex_vpc_network.this.folder_id
   name           = "${var.name}-public"
-  v4_cidr_blocks = ["192.168.10.0/24"]
+  v4_cidr_blocks = ["10.10.10.0/24"]
   zone           = var.nat_instance_zone
   network_id     = yandex_vpc_network.this.id
   labels         = var.labels
@@ -59,6 +59,10 @@ resource "yandex_compute_instance" "nat_instance" {
   network_interface {
     nat       = true
     subnet_id = yandex_vpc_subnet.public[0].id
+  }
+
+  metadata = {
+    user-data = "#cloud-config\nusers:\n  - name: ${var.user_name}\n    groups: sudo\n    shell: /bin/bash\n    sudo: ['ALL=(ALL) NOPASSWD:ALL']\n    ssh-authorized-keys:\n      - ${var.public_key}"
   }
 
   depends_on = [

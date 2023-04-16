@@ -21,6 +21,18 @@ variable "name" {
   type        = string
 }
 
+variable "user_name" {
+  description = "user name"
+  type        = string
+  default     = "test"
+}
+
+variable "public_key" {
+  description = "ssh public key"
+  type        = string
+  default     = ""
+}
+
 variable "description" {
   description = "An optional description of this resource. Provide this property when you create the resource."
   type        = string
@@ -64,4 +76,3 @@ variable "nat_instance_zone" {
   type        = string
   default     = "ru-central1-a"
 }
-variable metadata_file { default =  "" }

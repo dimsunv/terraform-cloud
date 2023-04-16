@@ -16,3 +16,5 @@ variable boot_disk { default =  "network-hdd" }
 variable disk_size { default =  "20" }
 variable zone { default =  "" }
 variable folder_id { default =  "" }
+variable "user_name" { default = "test" }
+variable "public_key" {default = "" }

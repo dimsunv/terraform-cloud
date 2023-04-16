@@ -11,7 +11,7 @@ variable "yc_folder_id" {
 }
 
 variable "yc_region" {
-  default = "ru-central1-a"
+  default = ""
 }
 
 variable "yc_user_name" {
@@ -24,21 +24,29 @@ variable "yc_public_key" {
 
 locals {
 # node instance settings
-  node_instance_count = {
-    stage = 1
-    prod  = 1
-  }
   node_cores = {
     stage = 2
-    prod  = 2
+    prod  = 4
   }
   node_memory = {
     stage = 2
-    prod  = 2
+    prod  = 4
   }
   node_disk_size = {
     stage = 20
     prod  = 40
+  }
+  gitlab_cores = {
+    stage = 2
+    prod  = 2
+  }
+  gitlab_memory = {
+    stage = 4
+    prod  = 4
+  }
+  gitlab_disk_size = {
+    stage = 100
+    prod  = 100
   }
 
 #Network settings

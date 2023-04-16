@@ -6,7 +6,6 @@ module "vpc" {
   name          = terraform.workspace
   subnets       = local.private[terraform.workspace]
   nat_instance  = true
-  metadata_file = var.metadata
 }
 module "node" {
   source         = "../modules/instance"

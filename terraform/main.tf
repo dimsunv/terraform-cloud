@@ -4,7 +4,7 @@ module "vpc" {
   create_folder = length(var.yc_folder_id) > 0 ? false : true
   yc_folder_id  = var.yc_folder_id
   name          = terraform.workspace
-  subnets       = local.private[terraform.workspace]
+  subnets       = local.vpc_subnets[terraform.workspace]
   nat_instance  = true
   user_name     = var.yc_user_name
   public_key    = var.yc_public_key

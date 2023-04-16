@@ -18,7 +18,7 @@ module "master-node" {
   folder_id      = module.vpc.folder_id
   image          = "centos-stream-8"
   platform_id    = "standard-v2"
-  name           = "master-node"
+  name           = "master-node-${module.vpc.subnet_ids[0]}"
   description    = ""
   instance_role  = "netology_k8s_cluster"
   cores          = local.node_cores[terraform.workspace]
@@ -43,7 +43,7 @@ module "worker-node-1" {
   folder_id      = module.vpc.folder_id
   image          = "centos-stream-8"
   platform_id    = "standard-v2"
-  name           = "worker-node"
+  name           = "worker-node-${module.vpc.subnet_ids[1]}"
   description    = ""
   instance_role  = "netology_k8s_cluster"
   cores          = local.node_cores[terraform.workspace]
@@ -68,7 +68,7 @@ module "worker-node-2" {
   folder_id      = module.vpc.folder_id
   image          = "centos-stream-8"
   platform_id    = "standard-v2"
-  name           = "worker-node"
+  name           = "worker-node-${module.vpc.subnet_ids[2]}"
   description    = ""
   instance_role  = "netology_k8s_cluster"
   cores          = local.node_cores[terraform.workspace]

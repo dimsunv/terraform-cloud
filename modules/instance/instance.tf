@@ -15,7 +15,7 @@ data "yandex_compute_image" "image" {
 
 resource "yandex_compute_instance" "instance" {
   count = var.instance_count
-  name = "${var.name}-${var.subnet_id}-${format(var.count_format, var.count_offset+count.index+1)}"
+  name = "${var.name}-${format(var.count_format, var.count_offset+count.index+1)}"
   platform_id = var.platform_id
   hostname = "${var.name}-${format(var.count_format, var.count_offset+count.index+1)}"
   description = var.description

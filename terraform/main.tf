@@ -25,7 +25,6 @@ module "node" {
   nat            = "false"
   memory         = local.node_memory[terraform.workspace]
   core_fraction  = "100"
-  metadata_file  = var.metadata
   
   depends_on = [
     module.vpc

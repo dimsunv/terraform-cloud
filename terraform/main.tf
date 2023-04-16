@@ -31,19 +31,3 @@ module "node" {
     module.vpc
   ]
 }
-
-resource "local_file" "ssh_config" {
-  content = templatefile("template/ssh_config.tmpl",
-    {
-      
-      bastion_ip = module.vpc.bastion_public_ip[0]
-    
-    }
-  )
-  filename = "/home/boliwar/.ssh/config"
-
-  depends_on = [
-    module.node
-  ]
-}
-

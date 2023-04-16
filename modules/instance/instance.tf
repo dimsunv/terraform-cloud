@@ -38,8 +38,4 @@ resource "yandex_compute_instance" "instance" {
     subnet_id = var.subnet_id
     nat       = var.nat
   }
-
-  metadata = {
-    user-data = "${file(var.metadata_file)}"
-  }
 }

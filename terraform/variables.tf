@@ -1,6 +1,3 @@
-variable "metadata" {
-   default = "/home/boliwar/meta.txt"
-}
 variable "yc_token" {
    default = ""
 }

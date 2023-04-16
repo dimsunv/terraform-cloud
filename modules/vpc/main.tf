@@ -61,10 +61,6 @@ resource "yandex_compute_instance" "nat_instance" {
     subnet_id = yandex_vpc_subnet.public[0].id
   }
 
-  metadata = {
-    user-data = "${file(var.metadata_file)}"
-  }
-
   depends_on = [
     yandex_vpc_subnet.public
   ]

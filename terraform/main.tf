@@ -12,7 +12,7 @@ module "vpc" {
 
 module "master-node" {
   source         = "../modules/instance"
-  instance_count = 1
+  instance_count = 2
   subnet_id      = module.vpc.subnet_ids[0]
   zone           = "ru-central1-a"
   folder_id      = module.vpc.folder_id
@@ -37,7 +37,7 @@ module "master-node" {
 
 module "worker-node-1" {
   source         = "../modules/instance"
-  instance_count = 1
+  instance_count = 2
   subnet_id      = module.vpc.subnet_ids[1]
   zone           = "ru-central1-b"
   folder_id      = module.vpc.folder_id

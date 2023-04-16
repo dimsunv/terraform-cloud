@@ -38,7 +38,7 @@ locals {
   }
   gitlab_cores = {
     stage = 2
-    prod  = 2
+    prod  = 4
   }
   gitlab_memory = {
     stage = 4

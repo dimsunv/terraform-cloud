@@ -37,7 +37,7 @@ module "master-node" {
 
 module "worker-node-1" {
   source         = "../modules/instance"
-  instance_count = 2
+  instance_count = 1
   subnet_id      = module.vpc.subnet_ids[1]
   zone           = "ru-central1-b"
   folder_id      = module.vpc.folder_id
@@ -54,9 +54,9 @@ module "worker-node-1" {
   core_fraction  = "100"
   user_name      = var.yc_user_name
   public_key     = var.yc_public_key
-  
+
   depends_on = [
-    module.master-node
+    module.vpc
   ]
 }
 
@@ -79,9 +79,9 @@ module "worker-node-2" {
   core_fraction  = "100"
   user_name      = var.yc_user_name
   public_key     = var.yc_public_key
-  
+
   depends_on = [
-    module.worker-node-1
+    module.vpc
   ]
 }
 
@@ -104,8 +104,8 @@ module "gitlab-server" {
   core_fraction  = "100"
   user_name      = var.yc_user_name
   public_key     = var.yc_public_key
-  
+
   depends_on = [
-    module.worker-node-2
+    module.vpc
   ]
 }
